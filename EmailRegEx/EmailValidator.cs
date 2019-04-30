@@ -98,8 +98,8 @@ namespace EmailRegEx
             string pattern = Pattern;
             if (inPattern != null)
                 pattern = inPattern;
-            var emailWithoutDiacritics = inEmail.RemoveDiacritics();
-            return Regex.IsMatch(emailWithoutDiacritics, pattern);
+            //var emailWithoutDiacritics = inEmail.RemoveDiacritics();
+            return Regex.IsMatch(inEmail, pattern);
         }
     }
 }
