@@ -1,4 +1,5 @@
-﻿using System.Text.RegularExpressions;
+﻿using Rhyous.StringLibrary;
+using System.Text.RegularExpressions;
 
 namespace EmailRegEx
 {
@@ -97,8 +98,8 @@ namespace EmailRegEx
             string pattern = Pattern;
             if (inPattern != null)
                 pattern = inPattern;
-
-            return Regex.IsMatch(inEmail, pattern);
+            var emailWithoutDiacritics = inEmail.RemoveDiacritics();
+            return Regex.IsMatch(emailWithoutDiacritics, pattern);
         }
     }
 }

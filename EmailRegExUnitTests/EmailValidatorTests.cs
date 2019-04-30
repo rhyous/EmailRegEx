@@ -27,9 +27,9 @@ namespace EmailRegExUnitTests
         }
 
         [TestMethod]
-        public void IsValid_Test_5char_tld_ShouldFail()
+        public void IsValid_Test_5char_tld_ShouldPass() // This used to fail until Tlds were opened up, we had to make it succeed.
         {
-            Assert.IsFalse(EmailValidator.IsValid("joe@his.home.place"));
+            Assert.IsTrue(EmailValidator.IsValid("joe@his.home.place"));
         }
 
         [TestMethod]
@@ -198,6 +198,12 @@ namespace EmailRegExUnitTests
         public void IsValid_domain_single_char_ShouldMatch()
         {
             Assert.IsTrue(EmailValidator.IsValid("a@a.org"));
+        }
+
+        [TestMethod]
+        public void IsValid_Name_Has_Diacritics_ShouldMatch()
+        {
+            Assert.IsTrue(EmailValidator.IsValid("Dörte@Sörensen.example.com"));
         }
 
         #endregion
